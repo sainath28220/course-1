@@ -12,7 +12,7 @@ const App = () => {
   ]);
 
   const  addExpenses = (expenseReceived) => {
-    console.log([...expenses,{id: 'e' + String(expenses.length+1),...expenseReceived}])
+    // console.log([...expenses,{id: 'e' + String(expenses.length+1),...expenseReceived}])
     setExpenses([...expenses,{id:'e'+String(expenses.length+1),...expenseReceived}]);
     console.log(expenses)
   }
