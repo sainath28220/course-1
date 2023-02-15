@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = ({ onSubmit }) =>{
+const ExpenseForm = ({ onSubmit,stopSetBool }) =>{
   const [ title,setTitle ] = useState('');
   const [ amount,setAmount ] = useState('');
   const [ date,setDate ] = useState('');
+  
 
   //multipleStates
   // const [ userInput,setUserInput ] = useState({ title: '',amount: 0,date: '' })
@@ -16,8 +17,11 @@ const ExpenseForm = ({ onSubmit }) =>{
     setTitle('');
     setAmount('');
     setDate('')
+    stopSetBool();
   };
-
+  const changeBool = () =>{
+    setBool(prevBool=> !prevBool)
+  }
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
     // setUserInput({ ...userInput,title: event.target.value })
@@ -57,6 +61,7 @@ const ExpenseForm = ({ onSubmit }) =>{
         <input type='date' min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler} value={date}/>
       </div>
       <div className='new-expense__actions'>
+        <button type="button" onClick={stopSetBool}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </div>
